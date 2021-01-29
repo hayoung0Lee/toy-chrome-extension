@@ -49,3 +49,23 @@
 5. [content script](https://developer.chrome.com/docs/extensions/mv2/content_scripts/#pi)
     - [active tab](https://developer.chrome.com/docs/extensions/mv2/manifest/activeTab/)
       - 이걸 통해서 [tabs.executeScript](https://developer.chrome.com/docs/extensions/reference/tabs/#method-executeScript) 가 실행가능하다
+
+
+## Bookmarks for Each Site
+개발하다보니까, 참고하는 자료가 너무 많아서 상단 북마크만으로 관리가 좀 어려웠다. 
+
+bookmark를 관리해주는 다른 extension이 많은데, 나는 특히 도메인 별로 북마크를 관리하고 싶었다. 
+
+youtube 페이지에가면 youtube 북마크해놓은 내용만 구조를 짜서 볼 수 있게 하고 싶고, stackoverflow에서는 stackoverflow 북마크만 구조별로 볼 수 있었으면 하는.. 
+
+그리고 솔직히 북마크 해놓고 이거뭐였는지 기억이 안나서, 북마크 위에 마우스를 대면 툴팁처럼 이게 무슨 영상이었는지 설명하는 메모창이 있었으면 좋겠다. 
+
+### 기능 개발 과정
+#### 1. 일단은 youtube page에서만 되도록 구현을 해보자!
+<img src="guide/version1.png" width="1460" height="819">
+
+1. youtube page 북마크 
+2. 각 마크한 내용에 memo 추가하기
+
+
+
