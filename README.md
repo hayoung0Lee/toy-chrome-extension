@@ -48,3 +48,4 @@
 
 5. [content script](https://developer.chrome.com/docs/extensions/mv2/content_scripts/#pi)
     - [active tab](https://developer.chrome.com/docs/extensions/mv2/manifest/activeTab/)
+      - 이걸 통해서 [tabs.executeScript](https://developer.chrome.com/docs/extensions/reference/tabs/#method-executeScript) 가 실행가능하다
