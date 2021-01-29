@@ -1,6 +1,7 @@
 # Toy Project One: TS-CHROME-EXTENSION
 - [Getting started](https://developer.chrome.com/docs/extensions/mv2/getstarted/)
 - [developer chrome](https://developer.chrome.com/)
+- [API reference](https://developer.chrome.com/docs/extensions/reference/#popups)
   
 ## Getting Started 읽어보자
 - Chrome Extension은 무엇으로 구성 되는가?
@@ -65,7 +66,39 @@ youtube 페이지에가면 youtube 북마크해놓은 내용만 구조를 짜서
 <img src="guide/version1.png" width="1460" height="819">
 
 1. youtube page 북마크 
-2. 각 마크한 내용에 memo 추가하기
+  - "youtube page에서 extension 활성화 하는 방법"
+    ```javascript
+    // background.js
+
+    conditions: [
+      new chrome.declarativeContent.PageStateMatcher({
+        pageUrl: { hostContains: "youtube.com" },
+      }),
+    ],
+    ```
+  - chrome [tabs](https://developer.chrome.com/docs/extensions/reference/tabs/): 
+    - executeScripts에 대한 설명은 [여기](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript)에 더 잘나와있다. Page에 JavaScript 코드를 넣어준다
+
+    ```javascript
+    // popup.js
+    changeColor.onclick = function (element) {
+      let color = element.target.value;
+      // query: chrome.tab.query(queryInfo: object, callback: function)
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.executeScript(tabs[0].id, { file: "/slider.js" });
+      });
+    };
+    ```
+
+// TODO:  아직 contents script가 뭔지 잘모르겠어서 파악하기
+// TODO: exectue Script 는 onclick에 달아서 써도 되는건지? 조사하기
+
+   - data 저장 어떻게 할지? [sync storage vs local storage](https://developer.chrome.com/docs/extensions/reference/storage/)
+
+- browse객체: https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
+
+
+1. 각 마크한 내용에 memo 추가하기
 
 
 
