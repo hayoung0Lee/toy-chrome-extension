@@ -96,9 +96,20 @@ youtube 페이지에가면 youtube 북마크해놓은 내용만 구조를 짜서
    - data 저장 어떻게 할지? [sync storage vs local storage](https://developer.chrome.com/docs/extensions/reference/storage/)
 
 - browse객체: https://love2dev.com/blog/ways-to-use-javascript-redirect-to-another-page/
-
+ 
 
 1. 각 마크한 내용에 memo 추가하기
 
 
 
+
+
+### 참고자료
+- [Creating a Chrome Extension with React and TypeScript](https://react.christmas/2020/12)
+```
+- manifest.json
+
+browser_action: 모든 화면에서 동작
+page_action: 특정 사이트에서만 동작
+
+```

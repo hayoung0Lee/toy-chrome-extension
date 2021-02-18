@@ -8,7 +8,8 @@ chrome.storage.sync.get("color", function (data) {
 changeColor.onclick = function (element) {
   let color = element.target.value;
   // query: chrome.tab.query((queryInfo: object), (callback: function));
+  // FIXME: slider.js 부르는 방식변경하기, 현재대로는 번들링이 안됨(수동으로 dist에 옮겨줘야함, 글구 어찌됬든 뭔가 이상함)
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    chrome.tabs.executeScript(tabs[0].id, { file: "/slider.js" });
+    chrome.tabs.executeScript(tabs[0].id, { file: "./slider.js" });
   });
 };
