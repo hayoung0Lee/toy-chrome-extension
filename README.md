@@ -113,3 +113,6 @@ browser_action: 모든 화면에서 동작
 page_action: 특정 사이트에서만 동작
 
 ```
+
+- [How To Create A Google Chrome Extension With React](https://medium.com/javascript-in-plain-english/how-to-create-google-chrome-extension-using-react-js-5c9e343323ff)
+  - portals: https://reactjs.org/docs/portals.html
