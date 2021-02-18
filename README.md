@@ -116,3 +116,15 @@ page_action: 특정 사이트에서만 동작
 
 - [How To Create A Google Chrome Extension With React](https://medium.com/javascript-in-plain-english/how-to-create-google-chrome-extension-using-react-js-5c9e343323ff)
   - portals: https://reactjs.org/docs/portals.html
+
+
+- [background script event](https://developer.chrome.com/docs/extensions/mv2/background_pages/)
+
+
+// "matches": ["https://www.youtube.com/*"],
+// TODO: background랑 통신하는 것, 그리고 왜 다 보이다가 갑자기 youtube page에서만 보이는건지 원인 파악하기
+
+
+- `chrome.runtime.sendMessage` can be used to pass messages to popups and background scripts
+- `chrome.tabs.sendMessage` can be used to pass messages to content scripts. It requires the id of a specified tab.
+- 
