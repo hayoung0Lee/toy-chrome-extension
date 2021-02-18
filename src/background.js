@@ -18,22 +18,6 @@ chrome.runtime.onInstalled.addListener(function () {
   });
 });
 
-// // FIXME: 이거 무조건 동작하게 개선하기(지금은 됬다 안됬다함)
-// chrome.storage.onChanged.addListener(function (changes, namespace) {
-//   console.log("Changes");
-//   for (var key in changes) {
-//     var storageChange = changes[key];
-//     console.log(
-//       'Storage key "%s" in namespace "%s" changed. ' +
-//         'Old value was "%s", new value is "%s".',
-//       key,
-//       namespace,
-//       storageChange.oldValue,
-//       storageChange.newValue
-//     );
-//   }
-// });
-
 // Background script is JavaScript code that's run as a separate
 // instance in the browser, and it's mostly used for listening to events
 // and to handle a browser wide state.
@@ -51,9 +35,21 @@ chrome.storage.local.get("bookmarkStatus", (res) => {
 //   value: isBookMarkOpen
 // }
 const sendBookMarkStatus = (isBookMarkOpen) => {
-  chrome.runtime.sendMessage({
+  // send message to popup
+  const message = {
     type: "BOOKMARK_STATUS",
     value: isBookMarkOpen,
+  };
+  chrome.runtime.sendMessage(message);
+
+  // send message to every active tab
+  chrome.tabs.query({}, (tabs) => {
+    tabs.forEach((tab) => {
+      if (tab.id) {
+        console.log("hello", tab.id);
+        chrome.tabs.sendMessage(tab.id, message);
+      }
+    });
   });
 };
 
