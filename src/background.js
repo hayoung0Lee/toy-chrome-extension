@@ -1,5 +1,5 @@
 chrome.runtime.onInstalled.addListener(function () {
-  chrome.storage.local.set({ bookmarkStatus: false }, function () {
+  chrome.storage.local.set({ bookmarkStatus: true }, function () {
     console.log("Value is set to " + false);
   });
 
@@ -53,6 +53,30 @@ const sendBookMarkStatus = (isBookMarkOpen) => {
   });
 };
 
+const addBookMarkAndSendResult = (bookMarkValue) => {
+  const message = {
+    type: "BOOKMARK_ADDED",
+    value: "SUCCESS",
+  };
+
+  //   {
+  //     active: true,
+  //     currentWindow: true,
+  //   },
+  console.log(`${bookMarkValue.scheme}//${bookMarkValue.host}/*`);
+
+  chrome.tabs.query(
+    { url: `${bookMarkValue.scheme}//${bookMarkValue.host}/*` },
+    (tabs) => {
+      tabs.forEach((tab) => {
+        if (tab.id) {
+          chrome.tabs.sendMessage(tab.id, message);
+        }
+      });
+    }
+  );
+};
+
 chrome.runtime.onMessage.addListener((request) => {
   console.log("Message received in background.js!", request);
 
@@ -64,6 +88,10 @@ chrome.runtime.onMessage.addListener((request) => {
       break;
     case "REQUEST_BOOKMARK_STATUS":
       sendBookMarkStatus(isBookMarkOpen);
+      break;
+    case "ADD_BOOKMARK":
+      bookMarkValue = request.value;
+      addBookMarkAndSendResult(bookMarkValue);
       break;
     default:
       break;

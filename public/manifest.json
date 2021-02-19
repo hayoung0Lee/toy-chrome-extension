@@ -2,7 +2,13 @@
   "name": "Bookmarks for Each Site",
   "version": "1.0",
   "description": "Build an Extension for Hayoung's needs",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "https://developer.chrome.com/",
+    "declarativeContent",
+    "storage"
+  ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
