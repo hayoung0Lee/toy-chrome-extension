@@ -127,4 +127,8 @@ page_action: 특정 사이트에서만 동작
 
 - `chrome.runtime.sendMessage` can be used to pass messages to popups and background scripts
 - `chrome.tabs.sendMessage` can be used to pass messages to content scripts. It requires the id of a specified tab.
-- 
+
+
+- using indexeddb: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
+- Local Database and Chrome Extensions (IndexedDB): https://dev.to/anobjectisa/local-database-and-chrome-extensions-indexeddb-36n
+- Chrome Extensions and a Local Database(IndexedDB): https://anobjectisa.medium.com/chrome-extensions-and-local-database-indexeddb-3c92e12c436
